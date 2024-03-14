@@ -25,8 +25,11 @@ jobs:
               with:
                 java-version: '11'
                 distribution: 'temurin'
-            
-            - name: Setup Sonarqube
+                
+            - name: steup sonarqube
+              uses: warchant/setup-sonar-scanner@v7
+
+            - name: Sonarqube Scan
               run: sonar-scanner
                     -Dsonar.host.url=${{secrets.SONAR_URL}}
                     -Dsonar.login=${{secrets.SONAR_TOKEN}}
