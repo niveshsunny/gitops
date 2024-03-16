@@ -57,9 +57,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Build Docker image
-        run: docker build -t ${{ env.REGISTRY }}${{ env.ECR_REPOSITORY }}:latest,${{ github.run_number }} .
+        run: docker build -t ${{ env.REGISTRY }}${{ env.ECR_REPOSITORY }}:latest -t ${{ env.REGISTRY }}${{ env.ECR_REPOSITORY }}:${{ github.run_number }} .
   
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
