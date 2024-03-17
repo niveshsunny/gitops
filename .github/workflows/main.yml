@@ -4,8 +4,8 @@ on: workflow_dispatch
 
 env:
   AWS_REGION: us-east-1
-  REGISTRY: 158897922573.dkr.ecr.us-east-1.amazonaws.com/
-  ECR_REPOSITORY: vprofileapp
+  REGISTRY: public.ecr.aws/w3m7y7x8/
+  ECR_REPOSITORY: vprofileappimg
   EKS_CLUSTER: 'vprofile-eks'
 
 jobs:
@@ -91,14 +91,8 @@ jobs:
       - name: print config file
         run: cat ~/.kube/config
         
-      - name: Login to ECR and create image pull secret
-        run: |
-          ECR_LOGIN_PASSWORD=$(aws ecr get-login-password --region ${{ env.AWS_REGION }})
-          kubectl create secret docker-registry regcred \
-            --docker-server=${{ secrets.REGISTRY }} \
-            --docker-username=AWS \
-            --docker-password="${ECR_LOGIN_PASSWORD}" \
-            --namespace=default
+      
+
 
       - name: Deploy Helm
         uses: bitovi/github-actions-deploy-eks-helm@v1.2.8
