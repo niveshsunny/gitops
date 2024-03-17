@@ -93,8 +93,8 @@ jobs:
         
       - name: Apply secret
         run: |
-          AWS_ACCOUNT=${{ secrets.AWS_ACCOUNT }}
-          AWS_REGION=${{ env.AWS_REGION }}
+          AWS_ACCOUNT= ${{ secrets.AWS_ACCOUNT }}
+          AWS_REGION=us-east-1
           ECR_LOGIN_PASSWORD=$(aws ecr get-login-password --region $AWS_REGION)
           kubectl create secret docker-registry regcred \
             --docker-server=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
