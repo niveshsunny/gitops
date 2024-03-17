@@ -103,5 +103,4 @@ jobs:
           #config-files: .github/values/dev.yaml
           chart-path: helm/vprofilecharts
           namespace: default
-          values: appimage=niveshsunny/vproapp:latest
           name: vprofile-stack    

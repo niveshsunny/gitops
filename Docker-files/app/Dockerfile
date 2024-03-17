@@ -11,4 +11,4 @@ COPY --from=BUILD_IMAGE CICD_KUBERNETES/target/vprofile-v2.war /usr/local/tomcat
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
-########dsHs
+########dsHsS
