@@ -6,7 +6,7 @@ env:
   AWS_REGION: us-east-1
   REGISTRY: 158897922573.dkr.ecr.us-east-1.amazonaws.com/
   ECR_REPOSITORY: vprofileapp
-  EKS_CLUSTER: ''
+  EKS_CLUSTER: 'vprofile-eks'
 
 jobs:
   Testing:
@@ -93,7 +93,7 @@ jobs:
         
       - name: login to ecr
         run: kubectl create secret docker-registry regcred --docker-server=${{ secrets.REGISTRY }} --docker-username=AWS --docker-password=$(aws ecr get-login-password)
-        
+
       - name: Deploy Helm
         uses: bitovi/github-actions-deploy-eks-helm@v1.2.8
         with:
