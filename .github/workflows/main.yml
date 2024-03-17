@@ -73,7 +73,7 @@ jobs:
           context: ./
 
   DeploytoEKS:
-    needs: Testing
+    needs: Build_and_Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
